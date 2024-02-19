@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 250ms
+  evaluation_interval: 1s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+
+rule_files:
+
+scrape_configs:
+  - job_name: "foo"
+    static_configs:
+      - targets:
+          - localhost:8001
+          - localhost:8002
+  - job_name: "bar"
+    static_configs:
+      - targets:
+          - localhost:8003
+  - job_name: "baz"
+    static_configs:
+      - targets:
+          - localhost:8004
