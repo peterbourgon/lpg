@@ -56,7 +56,7 @@ ${GRAFANA_ARTIFACT}:
 
 .PHONY: run
 run: install-prometheus install-grafana
-	@./run.bash ${STACK_DIR}
+	@./run.bash ${ROOT_DIR}
 
 .PHONY: clean-prometheus-data
 clean-prometheus-data:
