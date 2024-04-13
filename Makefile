@@ -45,7 +45,7 @@ install-grafana: ${GRAFANA_DST}/bin/grafana ${GRAFANA_DST}/grafana.ini
 ${GRAFANA_DST}/bin/grafana: ${GRAFANA_DST}
 
 ${GRAFANA_DST}/grafana.ini: ${GRAFANA_DST} grafana.ini
-	cp grafana.ini ${GRAFANA_DST}/grafana.ini
+	cat grafana.ini | env GRAFANA_DST=${GRAFANA_DST} envsubst > ${GRAFANA_DST}/grafana.ini
 
 ${GRAFANA_DST}: ${GRAFANA_ARTIFACT}
 	mkdir -p ${GRAFANA_DST}
