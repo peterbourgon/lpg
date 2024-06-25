@@ -58,6 +58,15 @@ ${GRAFANA_ARTIFACT}:
 run: install-prometheus install-grafana
 	@./run.bash ${ROOT_DIR}
 
+.PHONY: backup-grafana
+backup-grafana:
+	cp ${GRAFANA_DST}/grafana/data/grafana.db grafana.db
+
+.PHONY: restore-grafana
+restore-grafana:
+	mkdir -p ${GRAFANA_DST}/grafana/data
+	cp grafana.db ${GRAFANA_DST}/grafana/data/grafana.db
+
 .PHONY: clean-prometheus-data
 clean-prometheus-data:
 	rm -rf ${PROMETHEUS_DST}/data
@@ -66,6 +75,6 @@ clean-prometheus-data:
 clean-grafana-data:
 	rm -rf ${GRAFANA_DST}/data
 
-.PHONY: clean-all
-clean-all:
+.PHONY: clean
+clean:
 	rm -rf ${PROMETHEUS_DST} ${GRAFANA_DST} *.tar.gz
